@@ -5,10 +5,10 @@ The City of Boston's budget includes an **operating budget** and a **capital bud
 
 ## Goal
 The ultimate goal of this project is to improve the City of Boston's allocation of resources through the analysis of documented data. This project seeks to achieve this by:
-# Observing the spending's change over time to isolate any trends
-# Identifying differences in projected spending and actual spending
-# Exploring per capita spending
-# Investigating spending by department, budget category, geography, and program
+* Observing the spending's change over time to isolate any trends
+* Identifying differences in projected spending and actual spending
+* Exploring per capita spending
+* Investigating spending by department, budget category, geography, and program
 
 ## Data Required
 xyz
