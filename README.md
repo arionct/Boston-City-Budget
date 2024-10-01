@@ -18,7 +18,7 @@ This project will use data collected by the Citywide Analytics Team:
 * [General Boston data](https://data.boston.gov/)
 
 ## Data Modeling
-These are some ideas for how this project may model the relevant data to be able to draw conclusions:
+These are some ideas for how this project may model the data to be able to draw relevant conclusions:
 * **Time Series Modeling:** observe trends over time using tools such as ARIMA, exponential smoothing, etc.
 * **Variance Analysis with Regression Models:** identify differences in projected and actual spending.
 * **Per Capita Spending Analysis:** explore per capita spending by normalizing spending data by population.
