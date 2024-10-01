@@ -11,17 +11,17 @@ The ultimate goal of this project is to improve the City of Boston's allocation 
 * Investigating spending by department, budget category, geography, and program
 
 ## Data Required
-This project will use several resources for collecting the relevant data:
-* [Boston's operating budget](https://data.boston.gov/dataset/operating-budget/resource/3575b787-c1b6-4275-b4e1-c111a3601b75?inner_span=True)
-* [Boston's capital budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
-* [Summary of Boston's expenditures](https://data.boston.gov/dataset/checkbook-explorer)
-* [General Boston data](https://data.boston.gov/)
+- operating budget data
+- capital budget data
 
 ## Data Modeling
 xyz
 
 ## Data Visualization
-xyz
+- Bar charts comparing the spending of different categories; compare spending by different departments, compare spending by different budget categories, compare spending by geography (which areas receive the most funding), compare spending by program. Each of these categories will receive a bar chart that shows which department, category, area, or program receives the most funding.
+- From the bar chart data, we will select fields that take up higher amounts of the budget. We will make a scatter plot and draw a line of best fit to analyze the city's spending trends in this field over a period of time.
+- Scatter plots comparing city spending in certain areas alongside the median income of said area
+- 
 
 ## Testing
 xyz
