@@ -21,7 +21,7 @@ xyz
 - Bar charts comparing the spending of different categories; compare spending by different departments, compare spending by different budget categories, compare spending by geography (which areas receive the most funding), compare spending by program. Each of these categories will receive a bar chart that shows which department, category, area, or program receives the most funding.
 - From the bar chart data, we will select fields that take up higher amounts of the budget. We will make a scatter plot and draw a line of best fit to analyze the city's spending trends in this field over a period of time.
 - Scatter plots comparing city spending in certain areas alongside the median income of said area
-- 
+- Use bullet graphs to compare actual spending against budgeted amounts or targets, helping to identify areas of over- or under-spending.
 
 ## Testing
 xyz
