@@ -11,8 +11,11 @@ The ultimate goal of this project is to improve the City of Boston's allocation 
 * Investigating spending by department, budget category, geography, and program
 
 ## Data Required
-- operating budget data
-- capital budget data
+This project will use data collected by the Citywide Analytics Team:
+* [Boston's operating budget](https://data.boston.gov/dataset/operating-budget/resource/3575b787-c1b6-4275-b4e1-c111a3601b75?inner_span=True)
+* [Boston's capital budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
+* [Summary of Boston's expenditures](https://data.boston.gov/dataset/checkbook-explorer)
+* [General Boston data](https://data.boston.gov/)
 
 ## Data Modeling
 xyz
