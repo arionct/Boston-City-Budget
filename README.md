@@ -18,10 +18,12 @@ This project will use data collected by the Citywide Analytics Team:
 * [General Boston data](https://data.boston.gov/)
 
 ## Data Modeling
+These are some ideas for how this project may model the relevant data to be able to draw conclusions:
 * **Time Series Modeling:** observe trends over time using tools such as ARIMA, exponential smoothing, etc.
 * **Variance Analysis with Regression Models:** identify differences in projected and actual spending.
 * **Per Capita Spending Analysis:** explore per capita spending by normalizing spending data by population.
 * **Cluster Analysis for Geographical and Departmental Spending:** use clustering algorithms to group locations or departments to better target budgeting.
+* **Classification Models:** classify a given budget as over/under-spending using models such as a decision tree or logistic regression.
 
 ## Data Visualization
 * Bar charts comparing the spending of different categories; compare spending by different departments, compare spending by different budget categories, compare spending by geography (which areas receive the most funding), compare spending by program. Each of these categories will receive a bar chart that shows which department, category, area, or program receives the most funding.
