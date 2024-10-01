@@ -32,4 +32,7 @@ These are some ideas for how this project may model the data to be able to draw 
 * Use bullet graphs to compare actual spending against budgeted amounts or targets, helping to identify areas of over- or under-spending.
 
 ## Testing
-xyz
+* We will split training and testing data. Therefore. 20% of the dataset can be kept for testing purposes, while the remaining 80% will be used for training. This approach ensures that the model is evaluated on unseen data to provide an unbiased estimate of its generalization capability.
+* WE can also use k-fold cross-validation (e.g., k=5 or k=10) to ensure the model's robustness by training and testing it on different subsets of the dataset. This approach will help us prevent overfitting and ensures the model performs well on unseen data.
+* We will assess model perfomance base off of different locations and spending pattern with the actual test data we aquired with the test data.
+* We can also use Mean Absolute Error (MAE), Mean Squared Error (MSE), R-squared, and classification accuracy (for over/under-spending models) to evaluate the model's performance. This can help us gather different aspects of model quality and gather info about the accuracy and/or error quantification.
