@@ -12,7 +12,7 @@ The ultimate goal of this project is to improve the City of Boston's allocation 
 
 ## Data Required
 This project will use data collected by the Citywide Analytics Team:
-* [Boston's operating budget](https://data.boston.gov/dataset/operating-budget/resource/3575b787-c1b6-4275-b4e1-c111a3601b75?inner_span=True)
+* [Boston's operating budget](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba)
 * [Boston's capital budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
 * [Summary of Boston's expenditures](https://data.boston.gov/dataset/checkbook-explorer)
 * [General Boston data](https://data.boston.gov/)
@@ -33,6 +33,6 @@ These are some ideas for how this project may model the data to be able to draw 
 
 ## Testing
 * We will split training and testing data. Therefore. 20% of the dataset can be kept for testing purposes, while the remaining 80% will be used for training. This approach ensures that the model is evaluated on unseen data to provide an unbiased estimate of its generalization capability.
-* WE can also use k-fold cross-validation (e.g., k=5 or k=10) to ensure the model's robustness by training and testing it on different subsets of the dataset. This approach will help us prevent overfitting and ensures the model performs well on unseen data.
+* We can also use k-fold cross-validation (e.g., k=5 or k=10) to ensure the model's robustness by training and testing it on different subsets of the dataset. This approach will help us prevent overfitting and ensures the model performs well on unseen data.
 * We will assess model perfomance base off of different locations and spending pattern with the actual test data we aquired with the test data.
 * We can also use Mean Absolute Error (MAE), Mean Squared Error (MSE), R-squared, and classification accuracy (for over/under-spending models) to evaluate the model's performance. This can help us gather different aspects of model quality and gather info about the accuracy and/or error quantification.
