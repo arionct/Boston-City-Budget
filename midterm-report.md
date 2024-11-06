@@ -1,11 +1,11 @@
 ## Visualizations
-Lorem ipsum
+Our first few visualizations are bar graphs that depict the total budget/spending for various categories within the capital and operating budgets. The first bar graph explores the capital budget across all the departments, revealing the City of Boston’s emphasis on public education and Public Works. The next four bar graphs visualize the operating budget and actual operating expenses across the various expense categories (we attempted to graph across departments but there were far too many departments to build a coherent graph).
 
 ## Data Processing
-Lorem ipsum
+Fortunately, the data we are dealing with is entirely based in U.S. dollars. Thus, we did not need to perform any sort of data standardization to account for numerical differences that unnaturally occur as a result of unit differences. However, this is not to say that we did not engage in any data processing at all. Many of the cells reported “#Missing” values instead of numerical dollar values, meaning these cells would cause errors in numerical computation. Pandas made correcting these values very convenient, so they did not pose too much of an obstacle.
 
-## Data Modeling
-Lorem ipsum
-
-## Preliminary Results
-Lorem ipsum
+## Data Modeling & Preliminary Results
+There are many categories of data that can result in many types of models and analyses:
+* Our first method of modeling involves time series forecasting, allowing us to predict the budgets for the next few years. Considering we are working with time-based data to make these predictions, we decided to employ Autoregressive Integrated Moving Average (ARIMA) as implemented by the ARIMA class within the _statsmodels_ Python library; we made predictions for the different departments within the operating budget. These predictions can be used by City of Boston policymakers to make informed decisions about what departments will likely require more vs less attention in the future.
+* Our next analysis involves observing the variance between budgeting and actual observed spending. To do this, we took the squared error between budget and actual spending and showed the results in the form of a bar graph. This would allow policymakers to identify areas of inaccurate budget creation whose methods might need to be modified. Further, areas with low such variance likely have robust methods for calculating a budget and these methods can likely be held (mostly) the same. For example, the Personnel Services expense category has by far the highest variance, meaning that its budget is quite inaccurate; it may be helpful to revise the methods for its budget creation.
+* 
