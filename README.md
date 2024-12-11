@@ -43,6 +43,7 @@ This project will use data collected by the Citywide Analytics Team:
 * [Boston's capital budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
 * [Summary of Boston's expenditures](https://data.boston.gov/dataset/checkbook-explorer)
 * [General Boston data](https://data.boston.gov/)
+* [Boston Neighborhood Demographics](https://data.boston.gov/dataset/neighborhood-demographics/resource/d8c23c6a-b868-4ba4-8a3b-b9615a21be07)
 
 ## Data Visualization
 Visualizations: Please run our code to see interactive visualizations with interpretations, claims, and analysis. 
@@ -94,7 +95,7 @@ The program budget analysis shows a balanced distribution, with pensions receivi
 
 Overall, Boston's fiscal strategy reflects a deliberate emphasis on enhancing education, sustaining workforce support, and maintaining public safety. This balanced approach ensures that critical areas such as employee benefits, public services, and operational efficiency are well-funded, supporting the city's long-term goals for growth and sustainability.
 
-### Geographical Analysis
+### Geographical Analysis utilizing Capital Budget
 In order to better examine possible causes for neighborhood project spending, we analyzed economic data that related to each neighborhood. We filtered the capital budget data to find the mean spending of total project budget per neighborhood. This represents the project budget value for its respective neighborhood. Charlestown's z-score for income was within a normal range, but its z-score for budget exceeded 3. Assuming a normal distribution of data, having a budget 3 standard deviations away from the mean is improbable at only about a 0.3% chance. Thus, this value was considered an outlier and filtered out. Huber regression, a linear regression model robust to outliers, was used to model our data. The huber regression line shows a greater trend upward once the one outlier was removed. A correlation coefficient, calculated the same way as in in the previous data visualization shows a score of 0.47. This shows a positive trend between the two variables, suggesting that city project spending increases as a neighborhood's per capita income increases. In order to better examine possible causes for neighborhood project spending, we analyzed economic data that related to each neighborhood. Project Budget by neighborhood was found the same as in the previously described model. This time, we examined the poverty rate. The correlation coefficient was slightly weaker at about -0.26. However, these models support each other in suggesting that neighborhoods with more wealthy citizens receive more funding from the city for various projects.
 
 
