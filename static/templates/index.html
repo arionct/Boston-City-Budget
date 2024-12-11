@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City of Boston Budget Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+  <!-- Add Leaflet CSS and JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Content Container -->
+  <div class="container">
+    <header>
+      <h1>City of Boston Budget Analysis</h1>
+    </header>
+
+    <div class="nav-links">
+      <ul>
+        <li><a href="geography.html">Geographical Analysis</a></li>
+        <li><a href="operating.html">Operating Budget Analysis</a></li>
+        <li><a href="capital.html">Capital Budget Analysis</a></li>
+      </ul>
+    </div>
+
+    <p class="description">
+      The City of Boston's budget includes an operating budget and a capital budget.
+      The operating budget handles day-to-day expenses including public employees and services.
+      On the other hand, the capital budget is more focused on improving currently owned assets.
+      To optimize the allocation of resources for these budgets, it is crucial to understand how Boston's money is being
+      spent.
+      Through collaboration with the Citywide Analytics Team, Boston's central data organization, this project aims to
+      analyze how Boston spends its annual budget and any changes over time.
+      Furthermore, this project will contrast the projected spending against the actual spending and also examine per
+      capita spending.
+      We will provide visualizations to better analyze and explain these spending trends.
+    </p>
+    <footer>
+      &copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved
+    </footer>
+  </div>
+
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([42.3601, -71.0589], 13);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  </script>
+</body>
+
+</html>
