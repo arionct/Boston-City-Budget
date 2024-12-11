@@ -40,18 +40,8 @@
 	<div class="container py-4">
 		<h1 class="mb-4">Operating Budget Analysis</h1>
 		<p class="mb-4">
-			Below are some analytical models exploring the relationship between neighborhood-level characteristics
-			(such as per capita income and poverty rate) and the project's average total budget allocation.
+			Below are some data visualization models exploring the relationship for operating data.
 		</p>
-
-		<div class="d-flex justify-content-center mb-4">
-			<button class="btn btn-primary me-2" id="show-income-data">Show Per Capita Income Data</button>
-			<button class="btn btn-secondary" id="show-poverty-data">Show Poverty Rate Data</button>
-		</div>
-
-		<div class="chart-container">
-			<canvas id="regChart"></canvas>
-		</div>
 	</div>
 
     <div class="visualization-area">
@@ -60,50 +50,88 @@
             <div class="small-chart-container">
                 <canvas class="pie" id="department_budget"></canvas>
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                This pie chart shows that Boston Public Schools receives the largest budget for FY25, totaling $1,526,629,466, representing a substantial 32.9% of the total budget. This suggests a significant focus on education, with the Police Department and Pensions following as the next largest allocations, indicating a strong emphasis on public safety and employee retirement benefits.
+            </div>
         </div>
-
+        
         <div class="data-block">
             <h2 class="main-heading">Top 10 Departments: Expenses Over the Years</h2>
             <div class="small-chart-container">
                 <canvas id="department_budget_over_years"></canvas>
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                The line graph illustrates that Boston Public Schools consistently had the highest expenses over the years, with a steady upward trend, highlighting continued investment in education. Other departments like Public Safety and Health Services show more stable but slower increases, suggesting a more consistent allocation strategy over time.
+            </div>
         </div>
-
+        
         <div class="data-block">
             <h2 class="main-heading">FY25 Budget by Expense Category</h2>
             <div class="small-chart-container">
                 <canvas class="pie" id="cat_budget"></canvas>
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                This pie chart reveals that Personnel Services account for 50.8% of the total budget, signifying the city's substantial investment in staffing and wages. Other key categories like Contractual Services and Supplies & Materials receive smaller portions, reflecting the city's prioritization of employee-related expenses over operational costs.
+            </div>
         </div>
-
+        
         <div class="data-block">
-            <h2 class="main-heading">Category Expenses Overs Years</h2>
+            <h2 class="main-heading">Category Expenses Over Years</h2>
             <div class="small-chart-container">
                 <canvas id="cat_exp_over_years"></canvas>
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                The line graph illustrates that Personnel Services consistently maintain the highest expenses across all years, with a steady upward trajectory. This trend underscores the city's ongoing commitment to maintaining and expanding its workforce, while other categories like Contractual Services and Utilities show more moderate fluctuations.
+            </div>
         </div>
-
+        
         <div class="data-block">
             <h2 class="main-heading">Top 10 Program Budget FY25</h2>
             <div class="small-chart-container">
                 <canvas class="pie" id="top-10-program_budget"></canvas>
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                The pie chart shows that no single program receives a dominant share of the FY25 budget, reflecting a more balanced distribution of funds. However, Pensions receive the highest allocation at 9.1%, signifying a notable investment in employee retirement benefits relative to other programs.
+            </div>
         </div>
-
+        
         <div class="data-block">
             <h2 class="main-heading">Heatmap of Top 10 Program Budget FY25</h2>
             <div class="small-chart-container">
                 <img class="responsive-image" src="{{ url_for('static', filename='images/cabinet-dep-heatmap.png') }}" alt="Heatmap of Top 10 Program Budget FY25">
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                The heatmap shows that the Education Cabinet and Public Safety Cabinet have the highest expenditures across fiscal years, with darker shades indicating larger expenses. The Education Cabinet shows a clear upward trend in expenses from FY22 to FY25, suggesting increased investment in education, while Public Safety remains consistently high over the years.
+            </div>
         </div>
-
+        
         <div class="data-block">
             <h2 class="main-heading">Top 10 Departmental Expenses Treemap (FY25 Budget)</h2>
             <div class="small-chart-container">
                 <img class="responsive-image" src="{{ url_for('static', filename='images/departmental-treemap.png') }}" alt="Top 10 Departmental Expenses Treemap (FY25 Budget)">
             </div>
+            <div class="highlighted-note">
+                Analysis: <br/>
+                The treemap visualization highlights that Boston Public Schools have the largest allocation of funds, amounting to $1,526,629,466. This visualization emphasizes the scale of investment in education relative to other departments, with other large departments like Police and Pensions receiving significantly smaller portions of the overall budget.
+            </div>
         </div>
 
+    </div>
+    <div class="visualization-area">
+        <div class="highlighted-note">
+            <strong>Conclusion:</strong> <br/><br/>
+        The analysis of Boston's operating budget for FY25 highlights a strategic focus on education and workforce support, as demonstrated by the significant allocation to Boston Public Schools, which received the largest budget share at 32.9%. Over the years, Boston Public Schools have consistently shown an upward trend in expenses, underscoring the city's sustained investment in education. Similarly, the budget by expense category reveals that Personnel Services dominate at 50.8%, indicating the city's commitment to supporting its workforce through salaries, wages, and benefits. Other expense categories, such as contractual services and supplies, receive smaller allocations, reflecting the prioritization of employee-related costs over operational expenses.
+        <br/><br/>
+        The program budget analysis shows a balanced distribution, with pensions receiving the highest allocation among programs at 9.1%, reflecting a strong commitment to retirement benefits for city employees. The heatmap analysis provides further insights, highlighting that the Education and Public Safety Cabinets consistently have the highest expenditures across fiscal years. The steady increase in Education Cabinet spending from FY22 to FY25 emphasizes the city's prioritization of educational growth and development. Meanwhile, the treemap visualization reiterates Boston Public Schools' significant allocation and showcases how other top departments, like the Police and Fire Departments, contribute to public safety and essential services.
+        <br/><br/>
+        Overall, Boston's fiscal strategy reflects a deliberate emphasis on enhancing education, sustaining workforce support, and maintaining public safety. This balanced approach ensures that critical areas such as employee benefits, public services, and operational efficiency are well-funded, supporting the city's long-term goals for growth and sustainability.
+    </div>
     </div>
 
 	<footer class="bg-dark text-white text-center py-3 mt-5">
@@ -112,93 +140,6 @@
 
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-	<script>
-		let regChart;
-		const ctx = document.getElementById('regChart').getContext('2d');
-
-		function createChart(xScatter, yScatter, xLine, yLine, title) {
-			if (regChart) regChart.destroy();
-			regChart = new Chart(ctx, {
-				type: 'scatter',
-				data: {
-					datasets: [
-						{
-							label: 'Neighborhood Data',
-							data: xScatter.map((x, i) => ({ x: x, y: yScatter[i] })),
-							backgroundColor: 'rgba(54, 162, 235, 0.7)',
-							pointRadius: 5
-						},
-						{
-							type: 'line',
-							label: 'Regression Line',
-							data: xLine.map((x, i) => ({ x: x, y: yLine[i] })),
-							borderColor: 'rgba(255, 99, 132, 1)',
-							borderWidth: 2,
-							fill: false,
-							pointRadius: 0
-						}
-					]
-				},
-				options: {
-					responsive: true,
-					plugins: {
-						title: {
-							display: true,
-							text: title
-						},
-						tooltip: {
-							mode: 'nearest',
-							intersect: false
-						},
-						legend: {
-							position: 'top'
-						}
-					},
-					scales: {
-						x: {
-							type: 'linear',
-							title: {
-								display: true,
-								text: 'X Axis'
-							}
-						},
-						y: {
-							title: {
-								display: true,
-								text: 'Project Budget'
-							}
-						}
-					}
-				}
-			});
-		}
-
-		async function fetchAndRender(url, title, xLabel = 'X Axis') {
-			const response = await fetch(url);
-			const data = await response.json();
-			createChart(
-				data.scatterplot.x,
-				data.scatterplot.y,
-				data.regression_line.x,
-				data.regression_line.y,
-				title
-			);
-			regChart.options.scales.x.title.text = xLabel;
-			regChart.update();
-		}
-
-		document.getElementById('show-income-data').addEventListener('click', () => {
-			fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
-		});
-
-		document.getElementById('show-poverty-data').addEventListener('click', () => {
-			fetchAndRender('/get-poverty-reg-data', 'Poverty Rate vs Project Budget', 'Poverty Rate');
-		});
-
-		// Load one dataset by default
-		fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
-	</script>
 
     <script src="static/js/operating-budget.js"></script>
 </body>

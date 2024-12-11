@@ -107,11 +107,9 @@ all-elements {
 .highlighted-note {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #666;
+    color: #000;
     background-color: #fff;
     padding: 0.8rem;
-    border-left: 4px solid #007bff;
-    border-radius: 4px;
     text-align: left;
 }
 
