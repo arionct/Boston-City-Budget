@@ -84,3 +84,12 @@ A model for project budget vs. poverty rate linear regression model.
 Outlier detection and removal, along with Huber regression was used to improve our previous project budget vs. per capita income model from one month ago.
 
 An interactive website detailing our findings and breaking down results based on budgets was implemented to allow for user accessibilty. Please read the 'How to Run the Code' section to run this website.
+
+## Conclusion
+
+# Operating Budget
+The analysis of Boston's operating budget for FY25 highlights a strategic focus on education and workforce support, as demonstrated by the significant allocation to Boston Public Schools, which received the largest budget share at 32.9%. Over the years, Boston Public Schools have consistently shown an upward trend in expenses, underscoring the city's sustained investment in education. Similarly, the budget by expense category reveals that Personnel Services dominate at 50.8%, indicating the city's commitment to supporting its workforce through salaries, wages, and benefits. Other expense categories, such as contractual services and supplies, receive smaller allocations, reflecting the prioritization of employee-related costs over operational expenses.
+
+The program budget analysis shows a balanced distribution, with pensions receiving the highest allocation among programs at 9.1%, reflecting a strong commitment to retirement benefits for city employees. The heatmap analysis provides further insights, highlighting that the Education and Public Safety Cabinets consistently have the highest expenditures across fiscal years. The steady increase in Education Cabinet spending from FY22 to FY25 emphasizes the city's prioritization of educational growth and development. Meanwhile, the treemap visualization reiterates Boston Public Schools' significant allocation and showcases how other top departments, like the Police and Fire Departments, contribute to public safety and essential services.
+
+Overall, Boston's fiscal strategy reflects a deliberate emphasis on enhancing education, sustaining workforce support, and maintaining public safety. This balanced approach ensures that critical areas such as employee benefits, public services, and operational efficiency are well-funded, supporting the city's long-term goals for growth and sustainability.
