@@ -53,31 +53,42 @@
       <canvas id="regChart"></canvas>
     </div>
   </div>
-  <p>
-    Per Capita Income vs. Project Budget - Huber Regression
-    In order to better examine possible causes for neighborhood project spending, we analyzed economic data that related
-    to each neighborhood.
-    We filtered the capital budget data to find the mean spending of total project budget per neighborhood. This is
-    represents the project budget value for its respective neighborhood.
-    Charlestown's z-score for income was within a normal range, but its z-score for budget exceeded 3. Assuming a normal
-    distribution of data, having a budget 3 standard deviations away from the mean is improbabale at only about a 0.3%
-    chance. Thus, this value was considered an outlier and filtered out.
-    Huber regression, a linear regression model robust to outliers, was used to model our data. The huber regression
-    line shows a greater trend upwards once the one outlier was removed.
-    A correlation coefficient, calculated the same way as in in the previous data visualization shows a score of 0.47.
-    This shows a positive trend between the two variables, suggesting that city project spending increases as a
-    neighborhood's per capita income increases.
-  </p>
-  <p>
-    Poverty Rate vs. Project Budget - Linear Regression
-    In order to better examine possible causes for neighborhood project spending, we analyzed economic data that related
-    to each neighborhood.
-    Project Budget by neighborhood was found the same as in the previously described model.
-    This time, we examined poverty rate.
-    The correlation coefficient was slightly weaker at about -0.26. However, these models support each other in
-    suggesting that neighborhoods with more wealthy citizens receieve more funding from the city for various projects.
+  <div class="visualization-area">
+    <div class="highlighted-note">
+      <strong>Data Cleaning, Validation Strategies, & Conclusion:</strong> <br /><br />
+      <p>
+        Per Capita Income vs. Project Budget - Huber Regression
+        In order to better examine possible causes for neighborhood project spending, we analyzed economic data that
+        related
+        to each neighborhood.
+        We filtered the capital budget data to find the mean spending of total project budget per neighborhood. This is
+        represents the project budget value for its respective neighborhood.
+        Charlestown's z-score for income was within a normal range, but its z-score for budget exceeded 3. Assuming a
+        normal
+        distribution of data, having a budget 3 standard deviations away from the mean is improbabale at only about a
+        0.3%
+        chance. Thus, this value was considered an outlier and filtered out.
+        Huber regression, a linear regression model robust to outliers, was used to model our data. The huber regression
+        line shows a greater trend upwards once the one outlier was removed.
+        A correlation coefficient, calculated the same way as in in the previous data visualization shows a score of
+        0.47.
+        This shows a positive trend between the two variables, suggesting that city project spending increases as a
+        neighborhood's per capita income increases.
+      </p>
+      <p>
+        Poverty Rate vs. Project Budget - Linear Regression
+        In order to better examine possible causes for neighborhood project spending, we analyzed economic data that
+        related
+        to each neighborhood.
+        Project Budget by neighborhood was found the same as in the previously described model.
+        This time, we examined poverty rate.
+        The correlation coefficient was slightly weaker at about -0.26. However, these models support each other in
+        suggesting that neighborhoods with more wealthy citizens receieve more funding from the city for various
+        projects.
 
-  </p>
+      </p>
+    </div>
+  </div>
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     &copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
