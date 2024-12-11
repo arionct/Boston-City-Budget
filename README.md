@@ -6,6 +6,30 @@ https://youtu.be/iNP8n7nPqCQ?feature=shared
 ## Project Description
 The City of Boston's budget includes an **operating budget** and a **capital budget**. The operating budget handles day-to-day expenses including public employees and services. On the other hand, the capital budget is more focused on improving currently owned assets. To optimize the allocation of resources for these budgets, it is crucial to understand how Boston's money is being spent. Through collaboration with the Citywide Analytics Team, Boston's central data organization, this project aims to analyze how Boston spends its annual budget and any changes over time. Further, this project will contrast the projected spending against the actual spending and also examine per capita spending.
 
+## How to run the Code
+1. **Clone the repository** (if applicable):
+```bash
+   git clone https://github.com/arionct/Boston-City-Budget
+   cd ./Boston-City-Budget/
+```
+2. **Install dependencies and create a virtual environment:**
+```bash
+make install
+```
+This command will:
+* Create a virtual environment called venv.
+* Install all required Python packages listed in requirements.txt.
+
+3. **Start the Flask application:**
+```bash
+make run
+```
+
+This will:
+* Set the FLASK_APP environment variable to app.py.
+* Start the Flask development server at http://localhost:3000.
+* Enable development mode with automatic reloading.
+
 ## Goal
 The ultimate goal of this project is to improve the City of Boston's allocation of resources through the analysis of documented data. This project seeks to achieve this by:
 * Observing the spending's change over time to isolate any trends
@@ -43,3 +67,11 @@ There are many categories of data that can result in many types of models and an
 * We can also use k-fold cross-validation (e.g., k=5 or k=10) to ensure the model's robustness by training and testing it on different subsets of the dataset. This approach will help us prevent overfitting and ensures the model performs well on unseen data.
 * We will assess model perfomance base off of different locations and spending pattern with the actual test data we aquired with the test data.
 * We can also use Mean Absolute Error (MAE), Mean Squared Error (MSE), R-squared, and classification accuracy (for over/under-spending models) to evaluate the model's performance. This can help us gather different aspects of model quality and gather info about the accuracy and/or error quantification.
+
+## Repository
+All the updated code relevant to our project is added in this repository. All the datasets and images are also in this repository.
+
+## Deliverables
+* Code and cleaned datasets are in the repo.
+* Provided a detailed README with instruction on how to run the code.
+* Video containing our visualizations and findings
