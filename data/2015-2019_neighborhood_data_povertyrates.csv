@@ -1,0 +1,31 @@
+﻿Neighborhood,Total population for whom poverty status is determined,Total in poverty,Poverty rate,Percent of Boston's impoverished
+United States,"316,715,051","42,510,843",13.40%, -  
+Massachusetts,"6,615,375","680,962",10.30%, -  
+Boston,"641,654","121,364",18.90%, -  
+Allston,"14,019","3,915",27.90%,3.20%
+Back Bay,"16,263","1,941",11.90%,1.60%
+Beacon Hill,"9,635",614,6.40%,0.50%
+Brighton,"52,145","8,972",17.20%,7.40%
+Charlestown,"19,800","2,859",14.40%,2.40%
+Dorchester,"126,173","28,033",22.20%,23.10%
+Downtown,"15,103","3,191",21.10%,2.60%
+East Boston,"47,038","7,548",16.00%,6.20%
+Fenway,"19,372","7,594",39.20%,6.30%
+Hyde Park,"38,493","5,743",14.90%,4.70%
+Jamaica Plain,"39,985","5,119",12.80%,4.20%
+Longwood,390,116,29.70%,0.10%
+Mattapan,"26,278","5,283",20.10%,4.40%
+Mission Hill,"15,244","5,647",37.00%,4.70%
+North End,"8,696",699,8.00%,0.60%
+Roslindale,"29,643","2,891",9.80%,2.40%
+Roxbury,"50,825","16,105",31.70%,13.30%
+South Boston,"36,595","5,154",14.10%,4.20%
+South Boston Waterfront,"4,190",248,5.90%,0.20%
+South End,"32,288","6,429",19.90%,5.30%
+West End,"5,909",830,14.00%,0.70%
+West Roxbury,"33,052","2,087",6.30%,1.70%
+,,,,
+"Source: U.S. Census Bureau, 2015-2019 American Community Survey, BPDA Research Division Analysis",,,,
+Table Name: Poverty Status in the Past 12 Months by Age,,,,
+Table ID:  B17020,,,,
+Universe: Population for whom poverty status is determined,,,,
