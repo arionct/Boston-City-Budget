@@ -43,7 +43,7 @@ This project will use data collected by the Citywide Analytics Team:
 * [Boston's capital budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
 * [Summary of Boston's expenditures](https://data.boston.gov/dataset/checkbook-explorer)
 * [General Boston data](https://data.boston.gov/)
-* [Boston Neighborhood Demographics](https://data.boston.gov/dataset/neighborhood-demographics/resource/d8c23c6a-b868-4ba4-8a3b-b9615a21be07)
+* [Boston Neighborhood Demographics](https://data.boston.gov/dataset/neighborhood-demographics/resource/d8c23c6a-b868-4ba4-8a3b-b9615a21be07) - Poverty Rates, & Per Capita Income tabs of table
 
 ## Data Visualization
 Visualizations: Please run our code to see interactive visualizations with interpretations, claims, and analysis. 
