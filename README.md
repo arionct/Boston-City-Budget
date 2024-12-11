@@ -87,7 +87,7 @@ An interactive website detailing our findings and breaking down results based on
 
 ## Conclusion
 
-# Operating Budget
+### Operating Budget
 The analysis of Boston's operating budget for FY25 highlights a strategic focus on education and workforce support, as demonstrated by the significant allocation to Boston Public Schools, which received the largest budget share at 32.9%. Over the years, Boston Public Schools have consistently shown an upward trend in expenses, underscoring the city's sustained investment in education. Similarly, the budget by expense category reveals that Personnel Services dominate at 50.8%, indicating the city's commitment to supporting its workforce through salaries, wages, and benefits. Other expense categories, such as contractual services and supplies, receive smaller allocations, reflecting the prioritization of employee-related costs over operational expenses.
 
 The program budget analysis shows a balanced distribution, with pensions receiving the highest allocation among programs at 9.1%, reflecting a strong commitment to retirement benefits for city employees. The heatmap analysis provides further insights, highlighting that the Education and Public Safety Cabinets consistently have the highest expenditures across fiscal years. The steady increase in Education Cabinet spending from FY22 to FY25 emphasizes the city's prioritization of educational growth and development. Meanwhile, the treemap visualization reiterates Boston Public Schools' significant allocation and showcases how other top departments, like the Police and Fire Departments, contribute to public safety and essential services.
