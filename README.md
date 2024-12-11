@@ -72,6 +72,6 @@ There are many categories of data that can result in many types of models and an
 All the updated code relevant to our project is added in this repository. All the datasets and images are also in this repository.
 
 ## Deliverables
-* Code and cleaned datasets are in the repo.
+* Code and cleaned datasets are in the repo. Cleaned code and data by removing unnecessary punctuations and converting data to numerical values.
 * Provided a detailed README with instruction on how to run the code.
 * Video containing our visualizations and findings
