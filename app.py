@@ -23,6 +23,23 @@ op_budg['FY25 Budget'] = pd.to_numeric(
     op_budg['FY25 Budget'].str.replace(',', ''))
 
 
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+  return render_template('index.html')
+
+@app.route('/operating-budget')
+def operating():
+  return render_template('operating-budget.html')
+
+#------------------------------------------------------------------------------------------------
+# Operating Budget
+#------------------------------------------------------------------------------------------------
+
+
+
+
 def get_huber_reg():
     neighborhood_budg = cap_budg.groupby(
         'Neighborhood')['Total_Project_Budget'].mean().sort_values(ascending=True)
@@ -124,3 +141,7 @@ def get_poverty_reg():
         }
     }
     return jsonify(graph_data)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
