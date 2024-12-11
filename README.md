@@ -84,6 +84,8 @@ We added more geographical analysis based on economic data of neighborhoods:
 A model for project budget vs. poverty rate linear regression model.
 Outlier detection and removal, along with Huber regression was used to improve our previous project budget vs. per capita income model from one month ago.
 
+ARIMA Model for Time Series Analysis Forecasting on expenses in operating budget.
+
 An interactive website detailing our findings and breaking down results based on budgets was implemented to allow for user accessibilty. Please read the 'How to Run the Code' section to run this website.
 
 ## Conclusion
