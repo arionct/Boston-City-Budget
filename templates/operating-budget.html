@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>City of Boston - Operating Budget</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Boston - Operating Budget</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
-		<!-- Add Chart.js for Graphs -->
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	</head>
+    <!-- Add Chart.js for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
-    </html>
+    <p>Hello</p>
+
+    <div class="visualization-area">
+			
+        <div class="data-block">
+            <h2 class="main-heading">Expenditures by Department</h2>
+            <div class="small-chart-container">
+                <canvas class="pie" id="department_budget"></canvas>
+            </div>
+            <div class="highlighted-note">
+                <p>
+                    <strong>Overview: </strong> The pie chart depicts the FY25 budget allocation among Boston's top 10 departments, highlighting their relative shares in the overall expenditure.
+                    <br/><br/>
+                    <strong>Insights:</strong> Boston Public Schools received the largest share of the FY25 budget at 32.9%, amounting to $1,526,629,446, demonstrating a significant investment in education. Other notable allocations include the Police Department at 10.2% and Pensions at 9.1%, emphasizing public safety and employee retirement benefits. Smaller portions are allocated to areas such as Debt Service, Health Insurance, and public infrastructure, reflecting a diversified approach to city funding priorities while maintaining a strong focus on essential services.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include external JavaScript file -->
+    <script src="static/js/operating-budget.js"></script>
+</body>
+</html>

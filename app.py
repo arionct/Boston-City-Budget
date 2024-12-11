@@ -29,14 +29,30 @@ app = Flask(__name__)
 def index():
   return render_template('index.html')
 
-@app.route('/operating-budget')
+@app.route('/operating-budget.html')
 def operating():
   return render_template('operating-budget.html')
 
 #------------------------------------------------------------------------------------------------
 # Operating Budget
 #------------------------------------------------------------------------------------------------
+# Summing expenses by department for each fiscal year
 
+pd.options.display.float_format = '{:,.2f}'.format
+
+# Top 10 Dept by FY25 Budget
+@app.route('/operating-budget.html/top-10-dept-by-fy25-budget')
+def get_operating_budget():
+    dept_spending = op_budg.groupby('Dept')[['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']].sum()
+    dept_spending = dept_spending.sort_values('FY25 Budget', ascending=False)
+
+    n = 10
+    top_n = dept_spending.head(n)  # Get the top 10 departments
+    other = dept_spending.iloc[n:].sum()  # Sum the remaining departments
+    top_n.loc['Other'] = other  # Add an 'Other' category
+
+    data = top_n.reset_index().to_dict(orient='records')
+    return jsonify(data)
 
 
 
