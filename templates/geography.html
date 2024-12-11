@@ -90,7 +90,7 @@
     let regChart;
     const ctx = document.getElementById('regChart').getContext('2d');
 
-    function createChart(xScatter, yScatter, xLine, yLine, title) {
+    function createChart(xScatter, yScatter, labels, xLine, yLine, title) {
       if (regChart) regChart.destroy();
       regChart = new Chart(ctx, {
         type: 'scatter',
@@ -98,7 +98,11 @@
           datasets: [
             {
               label: 'Neighborhood Data',
-              data: xScatter.map((x, i) => ({ x: x, y: yScatter[i] })),
+              data: xScatter.map((x, i) => ({
+                x: x,
+                y: yScatter[i],
+                neighborhood: labels[i] // Include neighborhood name in the data point
+              })),
               backgroundColor: 'rgba(54, 162, 235, 0.7)',
               pointRadius: 5
             },
@@ -121,8 +125,15 @@
               text: title
             },
             tooltip: {
-              mode: 'nearest',
-              intersect: false
+              callbacks: {
+                label: function (context) {
+                  // Add neighborhood name to the tooltip
+                  const label = context.raw.neighborhood;
+                  const x = context.raw.x;
+                  const y = context.raw.y;
+                  return `${label}: (X: ${x}, Y: ${y})`;
+                }
+              }
             },
             legend: {
               position: 'top'
@@ -153,6 +164,7 @@
       createChart(
         data.scatterplot.x,
         data.scatterplot.y,
+        data.scatterplot.labels, // Pass labels to the chart
         data.regression_line.x,
         data.regression_line.y,
         title

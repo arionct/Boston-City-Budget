@@ -34,6 +34,18 @@ def operating():
 def geography():
   return render_template('geography.html')
 
+@app.route('/capital.html')
+def capital():
+  return render_template('capital.html')
+
+#------------------------------------------------------------------------------------------------
+# Capital Budget
+#------------------------------------------------------------------------------------------------
+@app.route('/get-capital-department-budgets')
+def get_capital_department_budgets():
+   cap_budg.groupby('Department')['Total_Project_Budget'].sum().plot(kind='bar')
+
+
 #------------------------------------------------------------------------------------------------
 # Operating Budget
 #------------------------------------------------------------------------------------------------
@@ -147,7 +159,7 @@ def get_huber_reg():
         "scatterplot": {
             "x": filtered_df['Per Capita Income'].tolist(),
             "y": filtered_df['Project Budget'].tolist(),
-            "labels": filtered_df.index.tolist()  
+            "labels": filtered_df.index.tolist() if "Neighborhood" not in filtered_df else filtered_df['Neighborhood'].tolist() 
         },
         "regression_line": {
             "x": filtered_df['Per Capita Income'].tolist(),
@@ -188,7 +200,7 @@ def get_poverty_reg():
         "scatterplot": {
             "x": pd_combined_df['Poverty rate'].tolist(),
             "y": pd_combined_df['Total_Project_Budget'].tolist(),
-            "labels": pd_combined_df.index.tolist()  
+            "labels": pd_combined_df.index.tolist() if "Neighborhood" not in pd_combined_df else pd_combined_df['Neighborhood'].tolist() 
         },
         "regression_line": {
             "x": x_line.tolist(),
