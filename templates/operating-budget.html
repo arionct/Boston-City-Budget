@@ -2,46 +2,48 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>City of Boston - Operating Budget</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-	<!-- Chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<style>
-		.chart-container {
-			width: 100%;
-			max-width: 800px;
-			margin: 40px auto;
-		}
-	</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City of Boston - Operating Budget</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Boston Budget</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="geography.html">Geographical Analysis</a></li>
-					<li class="nav-item"><a class="nav-link active" href="{{ url_for('operating') }}">Operating Budget</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Boston Budget</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="geography.html">Geographical Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('operating') }}">Operating
+                            Budget</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-	<div class="container py-4">
-		<h1 class="mb-4">Operating Budget Analysis</h1>
-		<p class="mb-4">
-			Below are some data visualization models exploring the relationship for operating data.
-		</p>
-	</div>
+    <div class="container py-4">
+        <h1 class="mb-4">Operating Budget Analysis</h1>
+        <p class="mb-4">
+            Below are some data visualization models exploring the relationship for operating data.
+        </p>
+    </div>
 
     <div class="visualization-area">
         <div class="data-block">
@@ -50,97 +52,213 @@
                 <canvas class="pie" id="department_budget"></canvas>
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                This pie chart shows that Boston Public Schools receives the largest budget for FY25, totaling $1,526,629,466, representing a substantial 32.9% of the total budget. This suggests a significant focus on education, with the Police Department and Pensions following as the next largest allocations, indicating a strong emphasis on public safety and employee retirement benefits.
+                Analysis: <br />
+                This pie chart shows that Boston Public Schools receives the largest budget for FY25, totaling
+                $1,526,629,466, representing a substantial 32.9% of the total budget. This suggests a significant focus
+                on education, with the Police Department and Pensions following as the next largest allocations,
+                indicating a strong emphasis on public safety and employee retirement benefits.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">Top 10 Departments: Expenses Over the Years</h2>
             <div class="small-chart-container">
                 <canvas id="department_budget_over_years"></canvas>
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                The line graph illustrates that Boston Public Schools consistently had the highest expenses over the years, with a steady upward trend, highlighting continued investment in education. Other departments like Public Safety and Health Services show more stable but slower increases, suggesting a more consistent allocation strategy over time.
+                Analysis: <br />
+                The line graph illustrates that Boston Public Schools consistently had the highest expenses over the
+                years, with a steady upward trend, highlighting continued investment in education. Other departments
+                like Public Safety and Health Services show more stable but slower increases, suggesting a more
+                consistent allocation strategy over time.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">FY25 Budget by Expense Category</h2>
             <div class="small-chart-container">
                 <canvas class="pie" id="cat_budget"></canvas>
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                This pie chart reveals that Personnel Services account for 50.8% of the total budget, signifying the city's substantial investment in staffing and wages. Other key categories like Contractual Services and Supplies & Materials receive smaller portions, reflecting the city's prioritization of employee-related expenses over operational costs.
+                Analysis: <br />
+                This pie chart reveals that Personnel Services account for 50.8% of the total budget, signifying the
+                city's substantial investment in staffing and wages. Other key categories like Contractual Services and
+                Supplies & Materials receive smaller portions, reflecting the city's prioritization of employee-related
+                expenses over operational costs.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">Category Expenses Over Years</h2>
             <div class="small-chart-container">
                 <canvas id="cat_exp_over_years"></canvas>
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                The line graph illustrates that Personnel Services consistently maintain the highest expenses across all years, with a steady upward trajectory. This trend underscores the city's ongoing commitment to maintaining and expanding its workforce, while other categories like Contractual Services and Utilities show more moderate fluctuations.
+                Analysis: <br />
+                The line graph illustrates that Personnel Services consistently maintain the highest expenses across all
+                years, with a steady upward trajectory. This trend underscores the city's ongoing commitment to
+                maintaining and expanding its workforce, while other categories like Contractual Services and Utilities
+                show more moderate fluctuations.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">Top 10 Program Budget FY25</h2>
             <div class="small-chart-container">
                 <canvas class="pie" id="top-10-program_budget"></canvas>
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                The pie chart shows that no single program receives a dominant share of the FY25 budget, reflecting a more balanced distribution of funds. However, Pensions receive the highest allocation at 9.1%, signifying a notable investment in employee retirement benefits relative to other programs.
+                Analysis: <br />
+                The pie chart shows that no single program receives a dominant share of the FY25 budget, reflecting a
+                more balanced distribution of funds. However, Pensions receive the highest allocation at 9.1%,
+                signifying a notable investment in employee retirement benefits relative to other programs.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">Heatmap of Top 10 Program Budget FY25</h2>
             <div class="small-chart-container">
-                <img class="responsive-image" src="{{ url_for('static', filename='images/cabinet-dep-heatmap.png') }}" alt="Heatmap of Top 10 Program Budget FY25">
+                <img class="responsive-image" src="{{ url_for('static', filename='images/cabinet-dep-heatmap.png') }}"
+                    alt="Heatmap of Top 10 Program Budget FY25">
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                The heatmap shows that the Education Cabinet and Public Safety Cabinet have the highest expenditures across fiscal years, with darker shades indicating larger expenses. The Education Cabinet shows a clear upward trend in expenses from FY22 to FY25, suggesting increased investment in education, while Public Safety remains consistently high over the years.
+                Analysis: <br />
+                The heatmap shows that the Education Cabinet and Public Safety Cabinet have the highest expenditures
+                across fiscal years, with darker shades indicating larger expenses. The Education Cabinet shows a clear
+                upward trend in expenses from FY22 to FY25, suggesting increased investment in education, while Public
+                Safety remains consistently high over the years.
             </div>
         </div>
-        
+
         <div class="data-block">
             <h2 class="main-heading">Top 10 Departmental Expenses Treemap (FY25 Budget)</h2>
             <div class="small-chart-container">
-                <img class="responsive-image" src="{{ url_for('static', filename='images/departmental-treemap.png') }}" alt="Top 10 Departmental Expenses Treemap (FY25 Budget)">
+                <img class="responsive-image" src="{{ url_for('static', filename='images/departmental-treemap.png') }}"
+                    alt="Top 10 Departmental Expenses Treemap (FY25 Budget)">
             </div>
             <div class="highlighted-note">
-                Analysis: <br/>
-                The treemap visualization highlights that Boston Public Schools have the largest allocation of funds, amounting to $1,526,629,466. This visualization emphasizes the scale of investment in education relative to other departments, with other large departments like Police and Pensions receiving significantly smaller portions of the overall budget.
+                Analysis: <br />
+                The treemap visualization highlights that Boston Public Schools have the largest allocation of funds,
+                amounting to $1,526,629,466. This visualization emphasizes the scale of investment in education relative
+                to other departments, with other large departments like Police and Pensions receiving significantly
+                smaller portions of the overall budget.
             </div>
         </div>
+
+        <!-- Forecasting Section Added Here -->
+        <div class="data-block">
+            <h2 class="main-heading">Time Series Analysis and Forecasting</h2>
+            <p>
+                Select a department from the dropdown below to view the forecasted expenses for the next five years
+                (2026-2030). The forecasts are generated using an ARIMA model based on historical expense data.
+            </p>
+
+            <div class="mb-3">
+                <select id="forecastDept" class="form-select">
+                    <option value="" disabled selected>Select a Department</option>
+                </select>
+            </div>
+
+            <div id="forecastResults" class="table-responsive" style="display: none;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>2026</th>
+                            <th>2027</th>
+                            <th>2028</th>
+                            <th>2029</th>
+                            <th>2030</th>
+                        </tr>
+                    </thead>
+                    <tbody id="forecastTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End of Forecasting Section -->
 
     </div>
     <div class="visualization-area">
         <div class="highlighted-note">
-            <strong>Conclusion:</strong> <br/><br/>
-        The analysis of Boston's operating budget for FY25 highlights a strategic focus on education and workforce support, as demonstrated by the significant allocation to Boston Public Schools, which received the largest budget share at 32.9%. Over the years, Boston Public Schools have consistently shown an upward trend in expenses, underscoring the city's sustained investment in education. Similarly, the budget by expense category reveals that Personnel Services dominate at 50.8%, indicating the city's commitment to supporting its workforce through salaries, wages, and benefits. Other expense categories, such as contractual services and supplies, receive smaller allocations, reflecting the prioritization of employee-related costs over operational expenses.
-        <br/><br/>
-        The program budget analysis shows a balanced distribution, with pensions receiving the highest allocation among programs at 9.1%, reflecting a strong commitment to retirement benefits for city employees. The heatmap analysis provides further insights, highlighting that the Education and Public Safety Cabinets consistently have the highest expenditures across fiscal years. The steady increase in Education Cabinet spending from FY22 to FY25 emphasizes the city's prioritization of educational growth and development. Meanwhile, the treemap visualization reiterates Boston Public Schools' significant allocation and showcases how other top departments, like the Police and Fire Departments, contribute to public safety and essential services.
-        <br/><br/>
-        Overall, Boston's fiscal strategy reflects a deliberate emphasis on enhancing education, sustaining workforce support, and maintaining public safety. This balanced approach ensures that critical areas such as employee benefits, public services, and operational efficiency are well-funded, supporting the city's long-term goals for growth and sustainability.
+            <strong>Conclusion:</strong> <br /><br />
+            The analysis of Boston's operating budget for FY25 highlights a strategic focus on education and workforce
+            support, as demonstrated by the significant allocation to Boston Public Schools, which received the largest
+            budget share at 32.9%. Over the years, Boston Public Schools have consistently shown an upward trend in
+            expenses, underscoring the city's sustained investment in education. Similarly, the budget by expense
+            category reveals that Personnel Services dominate at 50.8%, indicating the city's commitment to supporting
+            its workforce through salaries, wages, and benefits. Other expense categories, such as contractual services
+            and supplies, receive smaller allocations, reflecting the prioritization of employee-related costs over
+            operational expenses.
+            <br /><br />
+            The program budget analysis shows a balanced distribution, with pensions receiving the highest allocation
+            among programs at 9.1%, reflecting a strong commitment to retirement benefits for city employees. The
+            heatmap analysis provides further insights, highlighting that the Education and Public Safety Cabinets
+            consistently have the highest expenditures across fiscal years. The steady increase in Education Cabinet
+            spending from FY22 to FY25 emphasizes the city's prioritization of educational growth and development.
+            Meanwhile, the treemap visualization reiterates Boston Public Schools' significant allocation and showcases
+            how other top departments, like the Police and Fire Departments, contribute to public safety and essential
+            services.
+            <br /><br />
+            Overall, Boston's fiscal strategy reflects a deliberate emphasis on enhancing education, sustaining
+            workforce support, and maintaining public safety. This balanced approach ensures that critical areas such as
+            employee benefits, public services, and operational efficiency are well-funded, supporting the city's
+            long-term goals for growth and sustainability.
+        </div>
     </div>
-    </div>
 
-	<footer class="bg-dark text-white text-center py-3 mt-5">
-		&copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
-	</footer>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        &copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
+    </footer>
 
-	<!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="static/js/operating-budget.js"></script>
+
+    <script>
+        // Forecast Data Handling
+        let forecastData = {};
+
+        async function loadForecastData() {
+            const res = await fetch('/operating-budget.html/get-forecast-data');
+            forecastData = await res.json();
+            const deptSelect = document.getElementById('forecastDept');
+            // Populate dropdown
+            for (let dept in forecastData) {
+                const opt = document.createElement('option');
+                opt.value = dept;
+                opt.textContent = dept;
+                deptSelect.appendChild(opt);
+            }
+        }
+
+        document.getElementById('forecastDept').addEventListener('change', function () {
+            const dept = this.value;
+            const resultsDiv = document.getElementById('forecastResults');
+            const tbody = document.getElementById('forecastTableBody');
+            tbody.innerHTML = '';
+
+            if (forecastData[dept]) {
+                const row = document.createElement('tr');
+                const deptCell = document.createElement('td');
+                deptCell.textContent = dept;
+                row.appendChild(deptCell);
+
+                ['Forecast_2026', 'Forecast_2027', 'Forecast_2028', 'Forecast_2029', 'Forecast_2030'].forEach(year => {
+                    const cell = document.createElement('td');
+                    cell.textContent = forecastData[dept][year];
+                    row.appendChild(cell);
+                });
+
+                tbody.appendChild(row);
+                resultsDiv.style.display = 'block';
+            } else {
+                resultsDiv.style.display = 'none';
+            }
+        });
+
+        // Load forecast data on page load
+        loadForecastData();
+    </script>
 </body>
 
 </html>

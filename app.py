@@ -1,9 +1,13 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 import matplotlib.pyplot as plt
 from flask import Flask, render_template, jsonify
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression, HuberRegressor
 from scipy.stats import zscore
+from statsmodels.tsa.arima.model import ARIMA
 
 # Read the data from the CSV file
 cap_budg = pd.read_csv('./data/capital_budget.csv')
@@ -54,8 +58,6 @@ def get_capital_department_budgets():
 #------------------------------------------------------------------------------------------------
 # Operating Budget
 #------------------------------------------------------------------------------------------------
-# Summing expenses by department for each fiscal year
-
 pd.options.display.float_format = '{:,.2f}'.format
 
 # Top 10 Dept by FY25 Budget
@@ -77,20 +79,15 @@ def get_expense_category():
     category_spending = op_budg.groupby('Expense Category')['FY25 Budget'].sum()
     category_spending = category_spending.sort_values(ascending=False)
     data = category_spending.reset_index().to_dict(orient='records')
-  
     return jsonify(data)
 
-@app.route('/operating-budget.html/top-10-dept-by-fy25-budget')
-def get_top_10_dept():
-  n = 10
 
-  dept_spending = op_budg.groupby('Dept')[['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']].sum()
-  dept_spending_sorted = dept_spending.sort_values('FY25 Budget', ascending=False)
-  top_n = dept_spending_sorted.head(n)
+# Remove the duplicate route for top 10 dept (already defined above)
+# @app.route('/operating-budget.html/top-10-dept-by-fy25-budget')
+# def get_top_10_dept():
+#   # This was a duplicate route, removed to avoid conflicts.
+#   pass
 
-  response_data = top_n.reset_index().to_dict(orient='records')
-
-  return jsonify(response_data)
 
 @app.route('/operating-budget.html/top-10-program_budget')
 def get_program_budget():
@@ -116,15 +113,17 @@ def get_expense_category_over_year():
 
     for category, row in category_spending.iterrows():
         response_data["categories"].append({
-        "category": category,
-        "expenses": {
-            "FY22": row['FY22 Actual Expense'],
-            "FY23": row['FY23 Actual Expense'],
-            "FY24": row['FY24 Appropriation'],
-            "FY25": row['FY25 Budget']
-        }})
+            "category": category,
+            "expenses": {
+                "FY22": row['FY22 Actual Expense'],
+                "FY23": row['FY23 Actual Expense'],
+                "FY24": row['FY24 Appropriation'],
+                "FY25": row['FY25 Budget']
+            }
+        })
         
     return jsonify(response_data)
+
 
 @app.route('/get-huber-reg-data')
 def get_huber_reg():
@@ -218,6 +217,55 @@ def get_poverty_reg():
         }
     }
     return jsonify(graph_data)
+
+
+# ------------------------------
+# Forecasting Integration
+# ------------------------------
+departments = op_budg['Dept'].dropna().unique()
+forecast_results = []
+
+for dept in departments:
+    dept_data = op_budg[op_budg['Dept'] == dept][['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']].sum()
+    dept_data.index = pd.to_datetime(['2022', '2023', '2024', '2025'])
+    dept_series = dept_data.squeeze()
+
+    if dept_data.empty or (dept_data == 0).all():
+        continue
+
+    if len(dept_series) < 3:
+        # Not enough data points for ARIMA
+        continue
+
+    try:
+        model = ARIMA(dept_series, order=(1, 1, 1))
+        model_fit = model.fit(method_kwargs={"warn_convergence": False})
+        forecast = model_fit.forecast(steps=5)
+        forecast.index = pd.to_datetime(['2026', '2027', '2028', '2029', '2030'], format='%Y')
+        formatted_forecast = [f'${x:,.2f}' for x in forecast.values]
+
+        forecast_results.append({
+            'Dept': dept,
+            'Forecast_2026': formatted_forecast[0],
+            'Forecast_2027': formatted_forecast[1],
+            'Forecast_2028': formatted_forecast[2],
+            'Forecast_2029': formatted_forecast[3],
+            'Forecast_2030': formatted_forecast[4]
+        })
+    except:
+        # If model fails, skip
+        continue
+
+forecast_df = pd.DataFrame(forecast_results)
+if not forecast_df.empty:
+    forecast_df.set_index('Dept', inplace=True)
+
+@app.route('/operating-budget.html/get-forecast-data')
+def get_forecast_data():
+    if forecast_df.empty:
+        return jsonify({})
+    return jsonify(forecast_df.to_dict(orient='index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
