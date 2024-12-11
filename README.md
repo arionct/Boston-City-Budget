@@ -75,3 +75,11 @@ All the updated code relevant to our project is added in this repository. All th
 * Code and cleaned datasets are in the repo. Cleaned code and data by removing unnecessary punctuations and converting data to numerical values.
 * Provided a detailed README with instruction on how to run the code.
 * Video containing our visualizations and findings
+
+## Progress Since Midterm Report: 
+We added more geographical analysis based on economic data of neighborhoods: 
+A model for project budget vs. poverty rate linear regression model.
+Outlier detection and removal, along with Huber regression was used to improve our previous project budget vs. per capita income model from one month ago.
+
+An interactive website detailing our findings and breaking down results based on budgets was implemented to allow for user accessibilty. Please read the 'How to Run the Code' section to run this website.
+Visualizations: Please run our code to see interactive visualizations with analysis.
