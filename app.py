@@ -9,6 +9,9 @@ from sklearn.linear_model import LinearRegression, HuberRegressor
 from scipy.stats import zscore
 from statsmodels.tsa.arima.model import ARIMA
 
+import warnings
+warnings.filterwarnings("ignore")
+
 # Read the data from the CSV file
 cap_budg = pd.read_csv('./data/capital_budget.csv')
 op_budg = pd.read_csv('./data/operating_budget.csv')
