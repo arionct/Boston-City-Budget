@@ -54,6 +54,58 @@
 		</div>
 	</div>
 
+    <div class="visualization-area">
+        <div class="data-block">
+            <h2 class="main-heading">Top 10 Department Budget FY25</h2>
+            <div class="small-chart-container">
+                <canvas class="pie" id="department_budget"></canvas>
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">Top 10 Departments: Expenses Over the Years</h2>
+            <div class="small-chart-container">
+                <canvas id="department_budget_over_years"></canvas>
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">FY25 Budget by Expense Category</h2>
+            <div class="small-chart-container">
+                <canvas class="pie" id="cat_budget"></canvas>
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">Category Expenses Overs Years</h2>
+            <div class="small-chart-container">
+                <canvas id="cat_exp_over_years"></canvas>
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">Top 10 Program Budget FY25</h2>
+            <div class="small-chart-container">
+                <canvas class="pie" id="top-10-program_budget"></canvas>
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">Heatmap of Top 10 Program Budget FY25</h2>
+            <div class="small-chart-container">
+                <img class="responsive-image" src="{{ url_for('static', filename='images/cabinet-dep-heatmap.png') }}" alt="Heatmap of Top 10 Program Budget FY25">
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h2 class="main-heading">Top 10 Departmental Expenses Treemap (FY25 Budget)</h2>
+            <div class="small-chart-container">
+                <img class="responsive-image" src="{{ url_for('static', filename='images/departmental-treemap.png') }}" alt="Top 10 Departmental Expenses Treemap (FY25 Budget)">
+            </div>
+        </div>
+
+    </div>
+
 	<footer class="bg-dark text-white text-center py-3 mt-5">
 		&copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
 	</footer>
@@ -148,12 +200,6 @@
 		fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
 	</script>
 
-    <div class="data-block">
-        <h2 class="main-heading">Expenditures by Department</h2>
-        <div class="small-chart-container">
-            <canvas class="pie" id="department_budget"></canvas>
-        </div>
-    </div>
     <script src="static/js/operating-budget.js"></script>
 </body>
 

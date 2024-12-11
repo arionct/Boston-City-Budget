@@ -51,7 +51,59 @@ def get_operating_budget():
     data = top_n.reset_index().to_dict(orient='records')
     return jsonify(data)
 
+@app.route('/operating-budget.html/expense_category')
+def get_expense_category():
+    category_spending = op_budg.groupby('Expense Category')['FY25 Budget'].sum()
+    category_spending = category_spending.sort_values(ascending=False)
+    data = category_spending.reset_index().to_dict(orient='records')
+  
+    return jsonify(data)
 
+@app.route('/operating-budget.html/top-10-dept-by-fy25-budget')
+def get_top_10_dept():
+  n = 10
+
+  dept_spending = op_budg.groupby('Dept')[['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']].sum()
+  dept_spending_sorted = dept_spending.sort_values('FY25 Budget', ascending=False)
+  top_n = dept_spending_sorted.head(n)
+
+  response_data = top_n.reset_index().to_dict(orient='records')
+
+  return jsonify(response_data)
+
+@app.route('/operating-budget.html/top-10-program_budget')
+def get_program_budget():
+    n_program = 10
+    program_spending = op_budg.groupby('Program')['FY25 Budget'].sum()
+    program_spending = program_spending.sort_values(ascending=False)
+    # Select the top 10 programs and sum the rest as "Other"
+    top_n_program = program_spending.head(n_program)
+    other = program_spending.iloc[n_program:].sum()
+    top_n_program.loc['Other'] = other
+    data = top_n_program.reset_index().to_dict(orient='records')
+
+    return jsonify(data)
+
+@app.route('/operating-budget.html/expense_category_over_year')
+def get_expense_category_over_year():
+    category_spending = op_budg.groupby('Expense Category')[['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']].sum()
+
+    response_data = {
+        "categories": [],
+        "years": ["FY22", "FY23", "FY24", "FY25"]
+    }
+
+    for category, row in category_spending.iterrows():
+        response_data["categories"].append({
+        "category": category,
+        "expenses": {
+            "FY22": row['FY22 Actual Expense'],
+            "FY23": row['FY23 Actual Expense'],
+            "FY24": row['FY24 Appropriation'],
+            "FY25": row['FY25 Budget']
+        }})
+        
+    return jsonify(response_data)
 
 @app.route('/get-huber-reg-data')
 def get_huber_reg():

@@ -117,12 +117,18 @@ all-elements {
 
 /* Graph Layouts */
 .small-chart-container {
-    width: 65%;
+    width: 75%;
     margin: 0 auto;
 }
 .large-chart-container {
     width: 100%;
     margin: 0 auto;
+}
+.responsive-image {
+    width: 100%; /* Image takes up 100% of the container width */
+    height: auto; /* Preserve aspect ratio */
+    object-fit: contain; /* Ensures the image fits within the container */
+    display: block; /* Remove extra spacing below the image */
 }
 
 /* Responsive Adjustments */
