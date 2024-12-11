@@ -29,21 +29,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="geography.html">Geographical Analysis</a></li>
+          <li class="nav-item"><a class="nav-link active" href="geography.html">Geographical & Capital Analysis</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('operating') }}">Operating Budget</a></li>
-          <li class="nav-item"><a class="nav-link" href="capital.html">Capital Budget</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="container py-4">
-    <h1 class="mb-4">Geographical Analysis</h1>
+    <h1 class="mb-4">Geographical & Capital Budget Analysis</h1>
     <p class="mb-4">
+      Capital budget describes long term project spending for the city. In our analysis, we use capital budget to look
+      at geographical relationships.
+
       Below are some analytical models exploring the relationship between neighborhood-level characteristics
       (such as per capita income and poverty rate) and the project's average total budget allocation.
     </p>
-
+    <br>
+    <canvas id="histogramChart" width="400" height="200"></canvas>
+    <br>
+    <br>
+    <br>
     <div class="d-flex justify-content-center mb-4">
       <button class="btn btn-primary me-2" id="show-income-data">Show Per Capita Income Data</button>
       <button class="btn btn-secondary" id="show-poverty-data">Show Poverty Rate Data</button>
@@ -65,7 +71,7 @@
         represents the project budget value for its respective neighborhood.
         Charlestown's z-score for income was within a normal range, but its z-score for budget exceeded 3. Assuming a
         normal
-        distribution of data, having a budget 3 standard deviations away from the mean is improbabale at only about a
+        distribution of data, having a budget 3 standard deviations away from the mean is improbable at only about a
         0.3%
         chance. Thus, this value was considered an outlier and filtered out.
         Huber regression, a linear regression model robust to outliers, was used to model our data. The huber regression
@@ -83,7 +89,7 @@
         Project Budget by neighborhood was found the same as in the previously described model.
         This time, we examined poverty rate.
         The correlation coefficient was slightly weaker at about -0.26. However, these models support each other in
-        suggesting that neighborhoods with more wealthy citizens receieve more funding from the city for various
+        suggesting that neighborhoods with more wealthy citizens receive more funding from the city for various
         projects.
 
       </p>
@@ -194,6 +200,54 @@
 
     // Load one dataset by default
     fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
+  </script>
+  <script>
+    async function fetchAndRenderHistogram(url, title) {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const ctx = document.getElementById('histogramChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: data.labels, // Department names
+          datasets: [{
+            label: 'Total Project Budget',
+            data: data.values, // Total budget per department
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: title
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Department'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Total Project Budget'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Load histogram data
+    fetchAndRenderHistogram('/get-capital-department-budgets', 'Total Project Budget by Department');
   </script>
 
 </html>

@@ -34,16 +34,21 @@ def operating():
 def geography():
   return render_template('geography.html')
 
-@app.route('/capital.html')
-def capital():
-  return render_template('capital.html')
 
 #------------------------------------------------------------------------------------------------
 # Capital Budget
 #------------------------------------------------------------------------------------------------
 @app.route('/get-capital-department-budgets')
 def get_capital_department_budgets():
-   cap_budg.groupby('Department')['Total_Project_Budget'].sum().plot(kind='bar')
+    grouped = cap_budg.groupby('Department')['Total_Project_Budget'].sum()
+    # Prepare data for Chart.js
+    labels = grouped.index.tolist()
+    values = grouped.values.tolist()
+
+    return jsonify({
+        'labels': labels,
+        'values': values
+    })
 
 
 #------------------------------------------------------------------------------------------------
