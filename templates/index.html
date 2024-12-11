@@ -2,58 +2,105 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>City of Boston Budget Analysis</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
-  <!-- Add Leaflet CSS and JS -->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    .hero {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/0/0e/Boston_skyline_from_East_Boston%2C_September_2017.jpg') no-repeat center center;
+      background-size: cover;
+      height: 60vh;
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-text {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    #map {
+      height: 300px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
-<body>
-  <!-- Map Container -->
-  <div id="map"></div>
-
-  <!-- Content Container -->
-  <div class="container">
-    <header>
-      <h1>City of Boston Budget Analysis</h1>
-    </header>
-
-    <div class="nav-links">
-      <ul>
-        <li><a href="geography.html">Geographical Analysis</a></li>
-        <li><a href="operating-budget.html">Operating Budget Analysis</a></li>
-        <li><a href="capital.html">Capital Budget Analysis</a></li>
-      </ul>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Boston Budget</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="geography.html">Geographical Analysis</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('operating') }}">Operating Budget</a></li>
+          <li class="nav-item"><a class="nav-link" href="capital.html">Capital Budget</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <p class="description">
-      The City of Boston's budget includes an operating budget and a capital budget.
-      The operating budget handles day-to-day expenses including public employees and services.
-      On the other hand, the capital budget is more focused on improving currently owned assets.
-      To optimize the allocation of resources for these budgets, it is crucial to understand how Boston's money is being
-      spent.
-      Through collaboration with the Citywide Analytics Team, Boston's central data organization, this project aims to
-      analyze how Boston spends its annual budget and any changes over time.
-      Furthermore, this project will contrast the projected spending against the actual spending and also examine per
-      capita spending.
-      We will provide visualizations to better analyze and explain these spending trends.
-    </p>
-    <footer>
-      &copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved
-    </footer>
+  <div class="hero">
+    <div class="hero-text text-center">
+      <h1 class="display-4">City of Boston Budget Analysis</h1>
+      <p class="lead">Explore how Boston allocates its resources and where the money really goes.</p>
+    </div>
   </div>
 
+  <div class="container py-4">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2>Overview</h2>
+        <p>
+          The City of Boston's budget includes both operating and capital components. The operating budget manages
+          day-to-day expenses like employee wages, utilities, and routine services. The capital budget focuses on
+          infrastructure and long-term assets, funding improvements to roads, schools, and public buildings.
+        </p>
+        <p>
+          This analysis, in collaboration with the Citywide Analytics Team, aims to visualize and understand spending
+          trends, compare projected versus actual spending, and examine per capita expenditures. Dive into the sections
+          to explore maps, charts, and interactive tools that bring Boston’s budgeting story to life.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3">
+    &copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Initialize the map
     var map = L.map('map').setView([42.3601, -71.0589], 13);
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
     }).addTo(map);
   </script>
 </body>

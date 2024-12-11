@@ -1,36 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City of Boston - Operating Budget</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
-    <!-- Add Chart.js for Graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>City of Boston - Operating Budget</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		.chart-container {
+			width: 100%;
+			max-width: 800px;
+			margin: 40px auto;
+		}
+	</style>
 </head>
-<body>
 
-    <p>Hello</p>
+<body class="bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Boston Budget</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="geography.html">Geographical Analysis</a></li>
+					<li class="nav-item"><a class="nav-link active" href="{{ url_for('operating') }}">Operating Budget</a></li>
+					<li class="nav-item"><a class="nav-link" href="capital.html">Capital Budget</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <div class="visualization-area">
-			
-        <div class="data-block">
-            <h2 class="main-heading">Expenditures by Department</h2>
-            <div class="small-chart-container">
-                <canvas class="pie" id="department_budget"></canvas>
-            </div>
-            <div class="highlighted-note">
-                <p>
-                    <strong>Overview: </strong> The pie chart depicts the FY25 budget allocation among Boston's top 10 departments, highlighting their relative shares in the overall expenditure.
-                    <br/><br/>
-                    <strong>Insights:</strong> Boston Public Schools received the largest share of the FY25 budget at 32.9%, amounting to $1,526,629,446, demonstrating a significant investment in education. Other notable allocations include the Police Department at 10.2% and Pensions at 9.1%, emphasizing public safety and employee retirement benefits. Smaller portions are allocated to areas such as Debt Service, Health Insurance, and public infrastructure, reflecting a diversified approach to city funding priorities while maintaining a strong focus on essential services.
-                </p>
-            </div>
-        </div>
-    </div>
+	<div class="container py-4">
+		<h1 class="mb-4">Operating Budget Analysis</h1>
+		<p class="mb-4">
+			Below are some analytical models exploring the relationship between neighborhood-level characteristics
+			(such as per capita income and poverty rate) and the project's average total budget allocation.
+		</p>
 
-    <!-- Include external JavaScript file -->
-    <script src="static/js/operating-budget.js"></script>
+		<div class="d-flex justify-content-center mb-4">
+			<button class="btn btn-primary me-2" id="show-income-data">Show Per Capita Income Data</button>
+			<button class="btn btn-secondary" id="show-poverty-data">Show Poverty Rate Data</button>
+		</div>
+
+		<div class="chart-container">
+			<canvas id="regChart"></canvas>
+		</div>
+	</div>
+
+	<footer class="bg-dark text-white text-center py-3 mt-5">
+		&copy; 2024 Ilay Guler, Rehan Samaratunga, Arion Tripathi. All rights reserved.
+	</footer>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		let regChart;
+		const ctx = document.getElementById('regChart').getContext('2d');
+
+		function createChart(xScatter, yScatter, xLine, yLine, title) {
+			if (regChart) regChart.destroy();
+			regChart = new Chart(ctx, {
+				type: 'scatter',
+				data: {
+					datasets: [
+						{
+							label: 'Neighborhood Data',
+							data: xScatter.map((x, i) => ({ x: x, y: yScatter[i] })),
+							backgroundColor: 'rgba(54, 162, 235, 0.7)',
+							pointRadius: 5
+						},
+						{
+							type: 'line',
+							label: 'Regression Line',
+							data: xLine.map((x, i) => ({ x: x, y: yLine[i] })),
+							borderColor: 'rgba(255, 99, 132, 1)',
+							borderWidth: 2,
+							fill: false,
+							pointRadius: 0
+						}
+					]
+				},
+				options: {
+					responsive: true,
+					plugins: {
+						title: {
+							display: true,
+							text: title
+						},
+						tooltip: {
+							mode: 'nearest',
+							intersect: false
+						},
+						legend: {
+							position: 'top'
+						}
+					},
+					scales: {
+						x: {
+							type: 'linear',
+							title: {
+								display: true,
+								text: 'X Axis'
+							}
+						},
+						y: {
+							title: {
+								display: true,
+								text: 'Project Budget'
+							}
+						}
+					}
+				}
+			});
+		}
+
+		async function fetchAndRender(url, title, xLabel = 'X Axis') {
+			const response = await fetch(url);
+			const data = await response.json();
+			createChart(
+				data.scatterplot.x,
+				data.scatterplot.y,
+				data.regression_line.x,
+				data.regression_line.y,
+				title
+			);
+			regChart.options.scales.x.title.text = xLabel;
+			regChart.update();
+		}
+
+		document.getElementById('show-income-data').addEventListener('click', () => {
+			fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
+		});
+
+		document.getElementById('show-poverty-data').addEventListener('click', () => {
+			fetchAndRender('/get-poverty-reg-data', 'Poverty Rate vs Project Budget', 'Poverty Rate');
+		});
+
+		// Load one dataset by default
+		fetchAndRender('/get-huber-reg-data', 'Per Capita Income vs Project Budget', 'Per Capita Income');
+	</script>
 </body>
+
 </html>
