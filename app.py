@@ -30,6 +30,10 @@ def index():
 def operating():
   return render_template('operating-budget.html')
 
+@app.route('/geography.html')
+def geography():
+  return render_template('geography.html')
+
 #------------------------------------------------------------------------------------------------
 # Operating Budget
 #------------------------------------------------------------------------------------------------
@@ -85,10 +89,13 @@ def get_huber_reg():
     robust_model.fit(X_filtered, Y_filtered)
     y_robust_pred = robust_model.predict(X_filtered)
 
+    correlation = filtered_df['Project Budget'].corr(filtered_df['Per Capita Income'])
+
     graph_data = {
         "scatterplot": {
             "x": filtered_df['Per Capita Income'].tolist(),
-            "y": filtered_df['Project Budget'].tolist()
+            "y": filtered_df['Project Budget'].tolist(),
+            "labels": filtered_df.index.tolist()  
         },
         "regression_line": {
             "x": filtered_df['Per Capita Income'].tolist(),
@@ -96,7 +103,8 @@ def get_huber_reg():
         },
         "model": {
             "coefficients": robust_model.coef_.tolist(),
-            "intercept": robust_model.intercept_
+            "intercept": robust_model.intercept_,
+            "correlation": correlation
         }
     }
     return jsonify(graph_data)
@@ -122,11 +130,13 @@ def get_poverty_reg():
     # Create a line of best fit
     x_line = np.linspace(pd_combined_df['Poverty rate'].min(), pd_combined_df['Poverty rate'].max(), 100)
     y_line = linear_model.predict(x_line.reshape(-1, 1))
+    correlation = pd_combined_df['Total_Project_Budget'].corr(pd_combined_df['Poverty rate'])
 
     graph_data = {
         "scatterplot": {
             "x": pd_combined_df['Poverty rate'].tolist(),
-            "y": pd_combined_df['Total_Project_Budget'].tolist()
+            "y": pd_combined_df['Total_Project_Budget'].tolist(),
+            "labels": pd_combined_df.index.tolist()  
         },
         "regression_line": {
             "x": x_line.tolist(),
@@ -134,7 +144,8 @@ def get_poverty_reg():
         },
         "model": {
             "coefficients": linear_model.coef_.tolist(),
-            "intercept": linear_model.intercept_
+            "intercept": linear_model.intercept_,
+            "correlation": correlation
         }
     }
     return jsonify(graph_data)
